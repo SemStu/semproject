@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		166581746576B2429170E51B /* libPods-semproject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8255D68C68E3BD3D9161AD /* libPods-semproject.a */; };
 		A264AE9A1E805268005C549B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A264AE991E805268005C549B /* AppDelegate.swift */; };
 		A264AE9C1E805268005C549B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A264AE9B1E805268005C549B /* ViewController.swift */; };
 		A264AE9F1E805268005C549B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A264AE9D1E805268005C549B /* Main.storyboard */; };
 		A264AEA11E805268005C549B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A264AEA01E805268005C549B /* Assets.xcassets */; };
 		A264AEA41E805268005C549B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A264AEA21E805268005C549B /* LaunchScreen.storyboard */; };
+		A264AEAC1E8052CC005C549B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A264AEAB1E8052CC005C549B /* GoogleService-Info.plist */; };
+		A293C8B91E80A479002FC2FB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293C8B81E80A479002FC2FB /* TableViewController.swift */; };
+		A293C8BB1E80B32D002FC2FB /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293C8BA1E80B32D002FC2FB /* cell.swift */; };
+		A293C8BD1E80BBD5002FC2FB /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293C8BC1E80BBD5002FC2FB /* AddViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F8255D68C68E3BD3D9161AD /* libPods-semproject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-semproject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		537812E609797A4B1E57CF79 /* Pods-semproject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-semproject.release.xcconfig"; path = "Pods/Target Support Files/Pods-semproject/Pods-semproject.release.xcconfig"; sourceTree = "<group>"; };
+		75D175E12387CDB6983BEEF9 /* Pods-semproject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-semproject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-semproject/Pods-semproject.debug.xcconfig"; sourceTree = "<group>"; };
 		A264AE961E805268005C549B /* semproject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = semproject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A264AE991E805268005C549B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A264AE9B1E805268005C549B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +30,11 @@
 		A264AEA01E805268005C549B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A264AEA31E805268005C549B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A264AEA51E805268005C549B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A264AEAB1E8052CC005C549B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A293C8B71E805688002FC2FB /* semproject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = semproject.entitlements; sourceTree = "<group>"; };
+		A293C8B81E80A479002FC2FB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		A293C8BA1E80B32D002FC2FB /* cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
+		A293C8BC1E80BBD5002FC2FB /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddViewController.swift; path = ../AddViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +42,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				166581746576B2429170E51B /* libPods-semproject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C9526977AAD37169AD7AABB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F8255D68C68E3BD3D9161AD /* libPods-semproject.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A264AE8D1E805268005C549B = {
 			isa = PBXGroup;
 			children = (
 				A264AE981E805268005C549B /* semproject */,
 				A264AE971E805268005C549B /* Products */,
+				B76E4579B56181E14CE237BD /* Pods */,
+				5C9526977AAD37169AD7AABB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +78,28 @@
 		A264AE981E805268005C549B /* semproject */ = {
 			isa = PBXGroup;
 			children = (
+				A293C8B71E805688002FC2FB /* semproject.entitlements */,
+				A293C8BC1E80BBD5002FC2FB /* AddViewController.swift */,
 				A264AE991E805268005C549B /* AppDelegate.swift */,
 				A264AE9B1E805268005C549B /* ViewController.swift */,
+				A293C8B81E80A479002FC2FB /* TableViewController.swift */,
 				A264AE9D1E805268005C549B /* Main.storyboard */,
+				A293C8BA1E80B32D002FC2FB /* cell.swift */,
 				A264AEA01E805268005C549B /* Assets.xcassets */,
 				A264AEA21E805268005C549B /* LaunchScreen.storyboard */,
 				A264AEA51E805268005C549B /* Info.plist */,
+				A264AEAB1E8052CC005C549B /* GoogleService-Info.plist */,
 			);
 			path = semproject;
+			sourceTree = "<group>";
+		};
+		B76E4579B56181E14CE237BD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				75D175E12387CDB6983BEEF9 /* Pods-semproject.debug.xcconfig */,
+				537812E609797A4B1E57CF79 /* Pods-semproject.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +109,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A264AEA81E805268005C549B /* Build configuration list for PBXNativeTarget "semproject" */;
 			buildPhases = (
+				65DFD27B0A6EA80851650D5D /* [CP] Check Pods Manifest.lock */,
 				A264AE921E805268005C549B /* Sources */,
 				A264AE931E805268005C549B /* Frameworks */,
 				A264AE941E805268005C549B /* Resources */,
+				92BB10B7DF818908DDE89438 /* [CP] Embed Pods Frameworks */,
+				F93C247E7ECDA17F58C68A09 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -98,6 +139,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = H44Q9YW2Z5;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -125,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A264AEA41E805268005C549B /* LaunchScreen.storyboard in Resources */,
+				A264AEAC1E8052CC005C549B /* GoogleService-Info.plist in Resources */,
 				A264AEA11E805268005C549B /* Assets.xcassets in Resources */,
 				A264AE9F1E805268005C549B /* Main.storyboard in Resources */,
 			);
@@ -132,12 +179,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		65DFD27B0A6EA80851650D5D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		92BB10B7DF818908DDE89438 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-semproject/Pods-semproject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F93C247E7ECDA17F58C68A09 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-semproject/Pods-semproject-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		A264AE921E805268005C549B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A293C8BD1E80BBD5002FC2FB /* AddViewController.swift in Sources */,
 				A264AE9C1E805268005C549B /* ViewController.swift in Sources */,
+				A293C8BB1E80B32D002FC2FB /* cell.swift in Sources */,
+				A293C8B91E80A479002FC2FB /* TableViewController.swift in Sources */,
 				A264AE9A1E805268005C549B /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -259,8 +357,10 @@
 		};
 		A264AEA91E805268005C549B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75D175E12387CDB6983BEEF9 /* Pods-semproject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = semproject/semproject.entitlements;
 				DEVELOPMENT_TEAM = H44Q9YW2Z5;
 				INFOPLIST_FILE = semproject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -272,8 +372,10 @@
 		};
 		A264AEAA1E805268005C549B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 537812E609797A4B1E57CF79 /* Pods-semproject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = semproject/semproject.entitlements;
 				DEVELOPMENT_TEAM = H44Q9YW2Z5;
 				INFOPLIST_FILE = semproject/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -302,6 +404,7 @@
 				A264AEAA1E805268005C549B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

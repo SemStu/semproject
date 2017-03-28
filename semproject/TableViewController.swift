@@ -96,14 +96,7 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? SymbolViewController {
             
-            // get symbol of selected row
-            let indexPath = tableView.indexPathForSelectedRow!
-            let currentCell = tableView.cellForRow(at: indexPath)
-            let string = currentCell?.detailTextLabel?.text
-            
-            //request data from yahoo
-            let url = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + string! + "%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
-            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+            URLSession.shared.dataTask(with: ApiRequest()) { (data, response, error) in
                 if error != nil {
                     print(error!)
                 } else {
@@ -144,6 +137,18 @@ class TableViewController: UITableViewController {
                 }
                 }.resume()
         }
+    }
+    
+    func ApiRequest() -> URL {
+        // get symbol of selected row
+        let indexPath = tableView.indexPathForSelectedRow!
+        let currentCell = tableView.cellForRow(at: indexPath)
+        let string = currentCell?.detailTextLabel?.text
+        
+        //request data from yahoo
+        let url = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + string! + "%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
+        
+        return url!
     }
     
     func requestTable() {

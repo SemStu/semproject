@@ -61,9 +61,8 @@ class AddViewController: UIViewController {
                         let dataset = json["dataset"] as? [String: Any]
                         let date = dataset!["newest_available_date"]
                         let name = dataset!["name"]
+                        // substract companyname from output. example: "Apple Inc. (AAPL) > "Apple Inc."
                         let companyName = (name as AnyObject).components(separatedBy: "(")[0]
-                        let historicaldata = dataset!["data"]
-                        print(historicaldata!)
                         let symbol = dataset!["dataset_code"]!
                     
                         // save stock data to firebase database

@@ -46,7 +46,7 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! cell
 
-        // Configure the cell...
+        // configure the cell
         let keys = self.data?.allKeys
         let key = self.data?[keys![indexPath.row]] as! NSDictionary
         
@@ -96,25 +96,24 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? SymbolViewController {
             
+            // get symbol of selected row
             let indexPath = tableView.indexPathForSelectedRow!
             let currentCell = tableView.cellForRow(at: indexPath)
             let string = currentCell?.detailTextLabel?.text
             
+            //request data from yahoo
             let url = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + string! + "%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
-            print(url!)
             URLSession.shared.dataTask(with: url!) { (data, response, error) in
                 if error != nil {
                     print(error!)
                 } else {
                     do {
-                        let json = try JSONSerialization.jsonObject(with: data!) as! [String: AnyObject]
+                        let json = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
                         let dataset = json["query"] as? [String: Any]
                         let results = dataset?["results"] as? [String: Any]
                         let quote = results?["quote"] as! [String: Any]
-                        let bid = quote["Bid"] as? String?
-                        let ask = quote["Ask"] as? String?
-                        
-                        
+
+                        // assign values to placeholders
                         DispatchQueue.main.async {
                             if let lastPrice = quote["LastTradePriceOnly"] as? String {
                             viewController.price.text = lastPrice

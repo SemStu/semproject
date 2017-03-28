@@ -117,7 +117,7 @@ class TableViewController: UITableViewController {
                         
                         DispatchQueue.main.async {
                             if let lastPrice = quote["LastTradePriceOnly"] as? String {
-                            viewController.price.text = "Price: " + lastPrice
+                            viewController.price.text = lastPrice
                             }
                             if let volume = quote["Volume"] as? String {
                             viewController.volume.text = "Volume: " + volume

@@ -65,8 +65,7 @@ class AddViewController: UIViewController {
                         let symbol = dataset!?["dataset_code"]!
                     
                         // save stock data to firebase database
-                        let ref = FIRDatabase.database().reference()
-                        let path = ref.child("users").child((self.user?.uid)!).child("symbols").childByAutoId()
+                        let path = FIRDatabase.database().reference().child("users").child((self.user?.uid)!).child("symbols").childByAutoId()
                         path.child("symbol").setValue(symbol)
                         path.child("name").setValue(companyName)
                   
@@ -77,7 +76,6 @@ class AddViewController: UIViewController {
                     }
                     else {
                         DispatchQueue.main.async {
-                            print("incorrect symbol")
                             self.symbol.text = ""
                             self.activityIndicator.stopAnimating()
                         }

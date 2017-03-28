@@ -17,6 +17,7 @@
 		A293C8B91E80A479002FC2FB /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293C8B81E80A479002FC2FB /* TableViewController.swift */; };
 		A293C8BB1E80B32D002FC2FB /* cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293C8BA1E80B32D002FC2FB /* cell.swift */; };
 		A293C8BD1E80BBD5002FC2FB /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A293C8BC1E80BBD5002FC2FB /* AddViewController.swift */; };
+		A29617DA1E887C1C00762B2C /* SymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29617D91E887C1C00762B2C /* SymbolViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		A293C8B81E80A479002FC2FB /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		A293C8BA1E80B32D002FC2FB /* cell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cell.swift; sourceTree = "<group>"; };
 		A293C8BC1E80BBD5002FC2FB /* AddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddViewController.swift; path = ../AddViewController.swift; sourceTree = "<group>"; };
+		A29617D91E887C1C00762B2C /* SymbolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SymbolViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				A264AE991E805268005C549B /* AppDelegate.swift */,
 				A264AE9B1E805268005C549B /* ViewController.swift */,
 				A293C8B81E80A479002FC2FB /* TableViewController.swift */,
+				A29617D91E887C1C00762B2C /* SymbolViewController.swift */,
 				A264AE9D1E805268005C549B /* Main.storyboard */,
 				A293C8BA1E80B32D002FC2FB /* cell.swift */,
 				A264AEA01E805268005C549B /* Assets.xcassets */,
@@ -234,6 +237,7 @@
 			files = (
 				A293C8BD1E80BBD5002FC2FB /* AddViewController.swift in Sources */,
 				A264AE9C1E805268005C549B /* ViewController.swift in Sources */,
+				A29617DA1E887C1C00762B2C /* SymbolViewController.swift in Sources */,
 				A293C8BB1E80B32D002FC2FB /* cell.swift in Sources */,
 				A293C8B91E80A479002FC2FB /* TableViewController.swift in Sources */,
 				A264AE9A1E805268005C549B /* AppDelegate.swift in Sources */,

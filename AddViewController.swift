@@ -13,12 +13,17 @@ class AddViewController: UIViewController {
     
     let user = FIRAuth.auth()?.currentUser
     
-    @IBOutlet weak var symbol: UITextField!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var symbol: UITextField!
     @IBAction func addStockToWatchlist(_ sender: Any) {
         apiRequest()
-        }
+    }
 
     override func viewDidLoad() {
+        
+        activityIndicator.hidesWhenStopped = true;
+        activityIndicator.activityIndicatorViewStyle  = UIActivityIndicatorViewStyle.gray;
+        activityIndicator.center = view.center;
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
@@ -40,38 +45,51 @@ class AddViewController: UIViewController {
     func apiRequest() {
         
         // request stock data
-        let string = symbol?.text
-        let url = URL(string: "https://www.quandl.com/api/v3/datasets/WIKI/" + string!)
-        
+        activityIndicator.startAnimating()
+        let string = symbol.text
+        let url = URL(string: "https://www.quandl.com/api/v3/datasets/WIKI/" + string! + ".json?api_key=L4HUSrsL-AA_jaMQhGaR")
         URLSession.shared.dataTask(with: url!) { (data, response, error) in
             if error != nil {
                 print(error!)
             } else {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                    let dataset = json["dataset"] as? [String: Any]
-                    let date = dataset!["newest_available_date"] as! String
-                    let name = dataset!["name"]!
-                    let symbol = dataset!["dataset_code"]!
+                    let incorrectsymbol = json["quandl_error"] as? [String: Any]
                     
-                    // save stock data to firebase database
-                    let ref = FIRDatabase.database().reference()
-                    let path = ref.child("users").child((self.user?.uid)!).child("symbols").childByAutoId()
-                    path.setValue(["symbol":symbol])
-                    path.child("date").setValue(date)
-                    path.child("name").setValue(name)
+                    // check if symbol is valid
+                    if incorrectsymbol == nil {
+                        let dataset = json["dataset"] as? [String: Any]
+                        let date = dataset!["newest_available_date"]
+                        let name = dataset!["name"]
+                        let companyName = (name as AnyObject).components(separatedBy: "(")[0]
+                        let historicaldata = dataset!["data"]
+                        print(historicaldata!)
+                        let symbol = dataset!["dataset_code"]!
                     
-                    // perform segue after data previous task is completed
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "addStock", sender: Any?.self)
+                        // save stock data to firebase database
+                        let ref = FIRDatabase.database().reference()
+                        let path = ref.child("users").child((self.user?.uid)!).child("symbols").childByAutoId()
+                        path.child("symbol").setValue(symbol)
+                        path.child("date").setValue(date)
+                        path.child("name").setValue(companyName)
+                  
+                        // perform segue after data previous task is completed
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "addStock", sender: Any?.self)
+                        }
                     }
-                    
+                    else {
+                        DispatchQueue.main.async {
+                            print("incorrect symbol")
+                            self.symbol.text = ""
+                            self.activityIndicator.stopAnimating()
+                        }
+                    }
                 } catch let error as NSError {
                     print(error)
                 }
             }
         }.resume()
-        
     }
     
 }

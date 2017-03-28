@@ -48,10 +48,10 @@ class TableViewController: UITableViewController {
 
         // Configure the cell...
         let keys = self.data?.allKeys
-        let key2 = self.data?[keys![indexPath.row]] as! NSDictionary
+        let key = self.data?[keys![indexPath.row]] as! NSDictionary
         
-        cell.symbol.text = String(describing: key2["symbol"]!)
-        cell.companyName.text = String(describing: key2["name"]!)
+        cell.symbol.text = String(describing: key["symbol"]!)
+        cell.companyName.text = String(describing: key["name"]!)
 
         return cell
     }
@@ -91,15 +91,61 @@ class TableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let viewController = segue.destination as? SymbolViewController {
+            
+            let indexPath = tableView.indexPathForSelectedRow!
+            let currentCell = tableView.cellForRow(at: indexPath)
+            let string = currentCell?.detailTextLabel?.text
+            
+            let url = URL(string: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" + string! + "%22)&format=json&diagnostics=true&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=")
+            print(url!)
+            URLSession.shared.dataTask(with: url!) { (data, response, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    do {
+                        let json = try JSONSerialization.jsonObject(with: data!) as! [String: AnyObject]
+                        let dataset = json["query"] as? [String: Any]
+                        let results = dataset?["results"] as? [String: Any]
+                        let quote = results?["quote"] as! [String: Any]
+                        let bid = quote["Bid"] as? String?
+                        let ask = quote["Ask"] as? String?
+                        
+                        
+                        DispatchQueue.main.async {
+                            if let lastPrice = quote["LastTradePriceOnly"] as? String {
+                            viewController.price.text = "Price: " + lastPrice
+                            }
+                            if let volume = quote["Volume"] as? String {
+                            viewController.volume.text = "Volume: " + volume
+                            }
+                            if let lastTradeDate = quote["LastTradeDate"] as? String {
+                            viewController.lastTradingDate.text = "Last Trade Date: " + lastTradeDate
+                            }
+                            if let marketCap = quote["MarketCapitalization"] as? String {
+                            viewController.marketCap.text = "Market Cap.: " + marketCap
+                            }
+                            if let dividendPayDate = quote["DividendPayDate"] as? String {
+                            viewController.dividendPayDate.text = "Div. Paydate: " + dividendPayDate
+                            }
+                            if let dividendYield = quote["DividendYield"] as? String {
+                            viewController.dividendYield.text = "Div. Yield: " + dividendYield
+                            }
+                            if let previousClose = quote["PreviousClose"] as? String {
+                            viewController.previousClose.text = "Prev. Close: " + previousClose
+                            }
+                        }
+                        
+                    } catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+        }
     }
-    */
     
     func requestTable() {
         var ref: FIRDatabaseReference!

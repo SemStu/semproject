@@ -57,15 +57,12 @@ class AddViewController: UIViewController {
             } else {
                 do {
                     let json = try JSONSerialization.jsonObject(with: data!) as! [String: Any]
-                    let incorrectsymbol = json["quandl_error"] as? [String: Any]
+                    let dataset = json["dataset"] as? [String: Any]?
                     
-                    // check if symbol is valid
-                    if incorrectsymbol == nil {
-                        let dataset = json["dataset"] as? [String: Any]
-                        let name = dataset!["name"]
+                    if let name = dataset??["name"] {
                         // substract companyname from output. example: "Apple Inc. (AAPL) > "Apple Inc."
                         let companyName = (name as AnyObject).components(separatedBy: "(")[0]
-                        let symbol = dataset!["dataset_code"]!
+                        let symbol = dataset!?["dataset_code"]!
                     
                         // save stock data to firebase database
                         let ref = FIRDatabase.database().reference()

@@ -16,7 +16,8 @@ class AddViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var symbol: UITextField!
     @IBAction func addStockToWatchlist(_ sender: Any) {
-        apiRequest()
+        activityIndicator.startAnimating()
+        requestData()
     }
 
     override func viewDidLoad() {
@@ -42,13 +43,15 @@ class AddViewController: UIViewController {
         }
     }
     
-    func apiRequest() {
-        
+    func createApiUrl() -> URL {
         // request stock data
-        activityIndicator.startAnimating()
         let string = symbol.text
         let url = URL(string: "https://www.quandl.com/api/v3/datasets/WIKI/" + string! + ".json?api_key=L4HUSrsL-AA_jaMQhGaR")
-        URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        return url!
+    }
+    
+    func requestData() {
+        URLSession.shared.dataTask(with: createApiUrl()) { (data, response, error) in
             if error != nil {
                 print(error!)
             } else {
@@ -59,7 +62,6 @@ class AddViewController: UIViewController {
                     // check if symbol is valid
                     if incorrectsymbol == nil {
                         let dataset = json["dataset"] as? [String: Any]
-                        let date = dataset!["newest_available_date"]
                         let name = dataset!["name"]
                         // substract companyname from output. example: "Apple Inc. (AAPL) > "Apple Inc."
                         let companyName = (name as AnyObject).components(separatedBy: "(")[0]
@@ -69,7 +71,6 @@ class AddViewController: UIViewController {
                         let ref = FIRDatabase.database().reference()
                         let path = ref.child("users").child((self.user?.uid)!).child("symbols").childByAutoId()
                         path.child("symbol").setValue(symbol)
-                        path.child("date").setValue(date)
                         path.child("name").setValue(companyName)
                   
                         // perform segue after data previous task is completed

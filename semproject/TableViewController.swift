@@ -96,7 +96,7 @@ class TableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? SymbolViewController {
             
-            URLSession.shared.dataTask(with: ApiRequest()) { (data, response, error) in
+            URLSession.shared.dataTask(with: apiRequestFromTable()) { (data, response, error) in
                 if error != nil {
                     print(error!)
                 } else {
@@ -139,7 +139,7 @@ class TableViewController: UITableViewController {
         }
     }
     
-    func ApiRequest() -> URL {
+    func apiRequestFromTable() -> URL {
         // get symbol of selected row
         let indexPath = tableView.indexPathForSelectedRow!
         let currentCell = tableView.cellForRow(at: indexPath)
